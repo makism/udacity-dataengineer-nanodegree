@@ -75,14 +75,14 @@ def process_song_data(spark, input_data, output_data):
 
     # # extract columns to create songs table
     columns = ["song_id", "title", "artist_id", "year", "duration" ]
-    songs_table = df.select(*columns).distinct()
+    songs_table = df.select(*columns).dropDuplicates(["song_id"])
 
     # write songs table to parquet files partitioned by year and artist
     songs_table.write.mode("overwrite").partitionBy("year", "artist_id").parquet(f"{output_data}/songs_table/")
 
     # extract columns to create artists table
     columns = ["artist_id", "artist_name as name", "artist_location as location", "artist_latitude as latitude", "artist_longitude as longitude"]
-    artists_table = df.selectExpr(*columns).distinct()
+    artists_table = df.selectExpr(*columns).dropDuplicates(["artist_id"])
 
     # write artists table to parquet files
     artists_table.write.mode("overwrite").parquet(f"{output_data}/artists_table/")
@@ -133,7 +133,7 @@ def process_log_data(spark, input_data, output_data):
 
     # extract columns for users table    
     columns = ["CAST(userId AS INT) as user_id", "firstName as first_name", "lastName as last_name", "gender", "level"]
-    users_table = df.selectExpr(*columns).distinct()
+    users_table = df.selectExpr(*columns).dropDuplicates(["user_id"])
 
     # write users table to parquet files
     users_table.write.mode("overwrite").parquet(f"{output_data}/users_table/")
@@ -156,7 +156,7 @@ def process_log_data(spark, input_data, output_data):
         "weekday(timestamp) AS weekday",
     ]
 
-    time_table = df.selectExpr(*columns)    
+    time_table = df.selectExpr(*columns).dropDuplicates(["start_time"])  
 
     # write time table to parquet files partitioned by year and month
     time_table.write.mode("overwrite").partitionBy("year", "month").parquet(f"{output_data}/time_table/")
