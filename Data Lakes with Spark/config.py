@@ -9,8 +9,7 @@ APP_DEV = False
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = f"{ROOT_DIR}/data/"
-# ARTIFACTS_DIR = f"{ROOT_DIR}/artifacts/"
-ARTIFACTS_DIR = "/tmp/artifacts/"
+ARTIFACTS_DIR = f"{ROOT_DIR}/artifacts/"
 
 
 def get_logo():
