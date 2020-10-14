@@ -1,0 +1,19 @@
+{
+    "jsonpaths": [
+        "$['releaseDate']",
+        "$['FIPS']",
+        "$['county']",
+        "$['state']",
+        "$['NONE']",
+        "$['D0']",
+        "$['D1']",
+        "$['D2']",
+        "$['D3']",
+        "$['D4']",
+        "$['validStart']",
+        "$['validEnd']",
+        "$['county_cleaned']",
+        "$['part_year']",
+        "$['part_month']"
+    ]
+} 

@@ -1,0 +1,11 @@
+{
+    "jsonpaths": [
+        "$['dt']",
+        "$['AverageTemperature']",
+        "$['AverageTemperatureUncertainty']",
+        "$['State']",
+        "$['AverageTemperature_imputed']",
+        "$['part_year']",
+        "$['part_month']"
+    ]
+} 
