@@ -27,17 +27,17 @@ The datasets we are using are drawn from US Environmental Protection Agency (EPA
 
 A quick summary of the pipeline and some notes.
 
-| # | Summary                     | Where                     | Notes |
-|---|-----------------------------|---------------------------|-------|
-| 1 | Setup your AWS credentials. | IaC/dwh.json              |       |
-| 2 | Allocate resources.         | IaC/aws_create_cluster.py | can be skipped if you want to run local |
-| 3 | Fetch datasets              | raw_data/README.md        | |
-| 4 | Load and sample datasest    | 1 - Load and Sample.ipynb | consult `config/data.py` for more settings |
-| 5 | ETL                         | 2 - ETL.ipynb             | |
-| 6 | Model                       | 3 - Model.ipynb           | |
-| 7 | Quality Checks              | 4 - QC.ipynb              | |
-| 8 | Analytics                   | 5 - Analytics.ipynb       | @TODO |
-
+| # | Summary                     | Where                            | Notes |
+|---|-----------------------------|----------------------------------|-------|
+| 1 | Setup your AWS credentials. | IaC/dwh.json                     |       |
+| 2 | Allocate resources.         | IaC/aws_create_cluster.py        | can be skipped if you want to run local |
+| 3 | Fetch datasets              | raw_data/README.md               | |
+| 4 | Fetch precomputed artifacts | 0 - Fetch Raw Data and Artifacts | fetch the samples and artifacts we used |
+| 5 | Load and sample datasest    | 1 - Load and Sample.ipynb        | consult `config/data.py` for more settings |
+| 6 | ETL                         | 2 - ETL.ipynb                    | |
+| 7 | Model                       | 3 - Model.ipynb                  | |
+| 8 | Quality Checks              | 4 - QC.ipynb                     | |
+| 9 | Analytics                   | 5 - Analytics.ipynb              | @TODO |
 
 #### Infrastructure
 
@@ -106,6 +106,10 @@ sc.setSystemProperty("com.amazonaws.services.s3.enableV4", "true")
 
 In this paragraph, we will describe shortly each step in our proposed pipeline.
 
+##### 0 - Fetch Raw Data and Artifacts.ipynb
+
+We have provided a simple script to fetch the required raw data, and artifacts. This way, one can be able to replicate our work.
+
 ##### 1 - Load and Sample.ipynb
 
 ```mermaid
@@ -158,7 +162,6 @@ In this dataset, we filter only the relevant records with:
 ```
 
 afterwards, we drop the column "Country".
-
 
 ##### 2 - ETL.ipynb
 
