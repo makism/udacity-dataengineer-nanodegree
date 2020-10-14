@@ -2,6 +2,8 @@
 > Avraam Marimpis <avraam.marimpis@gmail.com> <br/>
 > October 2020
 
+> [GitHub Repository](https://github.com/makism/udacity-dataengineer-nanodegree/tree/master/5 - Capstone)
+
 > to properly view the graphs you may need to installl mermaid https://github.com/mermaid-js/mermaid
 
 ### 1. Intro
